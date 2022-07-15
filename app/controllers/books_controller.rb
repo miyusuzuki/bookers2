@@ -4,7 +4,6 @@ class BooksController < ApplicationController
   end
   
  def create
-        @user = current_user
 		    @book = Book.new(book_params)
         @book.user_id = (current_user.id)
 	    if @book.save
@@ -14,6 +13,7 @@ class BooksController < ApplicationController
         @books = Book.all
         flash[:notice] = ' errors prohibited this obj from being saved:'
         render "index"
+        
       end
 	end
   def index
